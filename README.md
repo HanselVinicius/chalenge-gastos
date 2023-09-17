@@ -1,6 +1,6 @@
 # Projeto Desafio de Gastos
 
-Este é o repositório do projeto Desafio de Gastos desenvolvido com Next.js.
+Este é o repositório do projeto Desafio de Gastos
 
 ## Uso Local
 
