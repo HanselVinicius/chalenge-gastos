@@ -9,7 +9,7 @@ Para executar o projeto localmente, siga os passos abaixo:
 1. Clone este repositório para o seu ambiente de desenvolvimento.
 
    ```shell
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   git@github.com:HanselVinicius/chalenge-gastos.git
 
    Instale as dependências usando o Yarn.
       yarn install
