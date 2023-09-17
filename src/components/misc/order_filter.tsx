@@ -13,7 +13,13 @@ export default function OrderFilter({ onOrderChange, onSearch }) {
   };
 
   const handleSearch = () => {
-    onSearch(searchValue);
+    setSearchValue(searchValue);
+  };
+
+  const handleSearchInputChange = (event) => {
+    const newSearchValue = event.target.value;
+    setSearchValue(newSearchValue);
+    onSearch(newSearchValue);
   };
 
   const handleKeyPress = (event) => {
@@ -33,8 +39,9 @@ export default function OrderFilter({ onOrderChange, onSearch }) {
             <FormControl>
               <InputLabel htmlFor="select1"> Valor</InputLabel>
               <NativeSelect value={orderOption} onChange={handleOrderChange} id="select1">
-                <option  value={1}>Maior</option>
-                <option value={2}>Menor</option>
+              <option value={1}>Selecione uma opção</option>
+                <option  value={2}>Maior</option>
+                <option value={3}>Menor</option>
               </NativeSelect>
             </FormControl>
           </Grid>
@@ -44,7 +51,7 @@ export default function OrderFilter({ onOrderChange, onSearch }) {
               label="Filtrar"
               variant="outlined"
               value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
+              onChange={handleSearchInputChange} 
               onKeyDown={handleKeyPress}
               InputProps={{
                 startAdornment: (

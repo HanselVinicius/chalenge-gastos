@@ -19,7 +19,7 @@ export default function LoginCard() {
   const [senha, setSenha] = useState('')
 
   const handleLogin = () => {
-    if (usuario == 'sensedata' && senha == '1234') {
+    if (usuario == 'sensedata@sensedata.com' && senha == '1234') {
       router.push('/dashboard');
     } else {
       toast.error('Credenciais Incorretas', {
@@ -67,6 +67,11 @@ export default function LoginCard() {
               variant="outlined"
               fullWidth
               margin="normal"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSubmit(e);
+                }
+              }}
             />
             <TextField
               onChange={(event) => {
@@ -79,7 +84,7 @@ export default function LoginCard() {
               type="password"
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  handleSubmit(e); // Chama handleSubmit ao pressionar Enter
+                  handleSubmit(e); 
                 }
               }}
             />

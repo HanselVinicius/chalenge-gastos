@@ -33,9 +33,9 @@ export default function DashBoard() {
 
   const sortData = (option) => {
     const sorted = [...filteredData]; 
-    if (option == 1) {
+    if (option == 2) {
       sorted.sort((a, b) => parseFloat(b.valor) - parseFloat(a.valor));
-    } else {
+    } else if (option == 3) {
       sorted.sort((a, b) => parseFloat(a.valor) - parseFloat(b.valor));
     }
     setFilteredData(sorted);

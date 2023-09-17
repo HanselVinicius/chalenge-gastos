@@ -9,7 +9,7 @@ export default function DataCardList({ data, onDelete }) {
         <CardContent sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Alert severity="info" icon={false}>
             <Typography variant="h6" gutterBottom>
-              Não há dados disponíveis.
+              Não há dados disponíveis ou o filtro aplicado não bate com nenhum dado.
             </Typography>
             <Typography>
               Por favor, adicione dados ao sistema para visualizar as informações.
