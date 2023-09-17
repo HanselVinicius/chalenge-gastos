@@ -1,5 +1,5 @@
 'use client'
-import React, {  useRef, useState } from 'react';
+import React, {  useEffect, useRef, useState } from 'react';
 import { IconButton, TextField, Button } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -7,25 +7,15 @@ declare var document: any;
 
 export default function EditDialog({updateData,data}) {
     const [valor, setValor] = useState(data['valor']);
-    const [date, setDate] = useState(data['data'].toLocaleDateString());
+    const [date, setDate] = useState(data['data'].toISOString().split('T')[0]);
     const [categoria, setCategoria] = useState(data['categoria']);
     const [descricao, setDescricao] = useState(data['descricao']);
     const [errorMessage, setErrorMessage] = useState('');
-  const formRef = useRef<HTMLFormElement | null>(null);
-
-
+    const formRef = useRef<HTMLFormElement | null>(null);
  
-    
+  
   function closeModal() {
-    setValor('');
-    setCategoria('');
-    setDate('')
-    setDescricao('');
-    setErrorMessage('');
-    document.getElementById('dialog_2').close();
-    if(formRef.current != null){
-    formRef.current.reset();
-    }
+    document.getElementById(data['id']).close();
   }
 
   function errorNotify(text:string){
@@ -60,25 +50,29 @@ export default function EditDialog({updateData,data}) {
     }
     
   
+
+    const timezoneOffset = new Date().getTimezoneOffset();
+    const adjustedDate = new Date(new Date(date).getTime() + timezoneOffset * 60 * 1000);
   
     const newItem = {
-      id: data.length + 1,
+      id: data.id,
       valor: parseFloat(valor),
-      data: new Date(date),
+      data: adjustedDate,
       categoria,
       descricao,
     };
   
-    const newDataSet = [...data, newItem];
-    updateData(newDataSet);
+    updateData(data.id,newItem);
     event.target.reset();
     closeModal();
   }
+
+
   
   return (
     <>
       <IconButton
-        onClick={() => document.getElementById('dialog_2').showModal()}
+        onClick={() => document.getElementById(data['id']).showModal()}
         edge="end"
         className='text-black'
         aria-label="adicionar"
@@ -86,7 +80,7 @@ export default function EditDialog({updateData,data}) {
         <EditIcon />
       </IconButton>
 
-      <dialog id="dialog_2" className="modal rounded-lg">
+      <dialog id={data['id']} className="modal rounded-lg">
         <div className="modal-card rounded-xl shadow-md p-4 bg-white w-96 mx-auto">
           <button className="close-button absolute top-2 right-2 bg-transparent border-none cursor-pointer text-gray-600" onClick={closeModal}>
             ✕
@@ -100,7 +94,7 @@ export default function EditDialog({updateData,data}) {
                 onChange={(event) => {
                   setValor(event.target.value)
                 }}
-                label={valor}
+                value={valor}
                 type="number"
                 variant="outlined"
                 fullWidth
@@ -108,12 +102,15 @@ export default function EditDialog({updateData,data}) {
               />
               <TextField
                 onChange={(event) => {
-                  setDate(event.target.value.toString())
+                  setDate(new Date(event.target.value.toString()))
                 }}
-                onBlur={(event)=>{
+                 onBlur={(event)=>{
                   setDate(event.target.value.toString())
                 }
-                }
+                } 
+
+                defaultValue={date}
+                //value={date}
                 type="date"
                 variant="outlined"
                 fullWidth
@@ -121,10 +118,9 @@ export default function EditDialog({updateData,data}) {
               />
               <TextField
                 onChange={(event) => {
-
                   setDescricao(event.target.value)
                 }}
-                label="Descrição"
+                value={descricao}
                 variant="outlined"
                 fullWidth
                 className="mb-2"
@@ -134,7 +130,7 @@ export default function EditDialog({updateData,data}) {
                 onChange={(event) => {
                   setCategoria(event.target.value)
                 }}
-                label="Categoria"
+                value={categoria}
                 variant="outlined"
                 fullWidth
                 className="mb-4"

@@ -16,7 +16,7 @@ export default function DataCard({ data, onDelete, onUpdate }: DataCardProps) {
       </IconButton>
 
       
-      {renderEditDialog(data)}
+      <EditDialog key={data['id']} data={data} updateData={onUpdate} />
 
       <CardContent className="flex-grow">
         <Typography variant="h6" gutterBottom>
@@ -51,6 +51,3 @@ export default function DataCard({ data, onDelete, onUpdate }: DataCardProps) {
   );
 }
 
-function renderEditDialog(data) {
-  return <EditDialog data={data} updateData={undefined} />;
-}

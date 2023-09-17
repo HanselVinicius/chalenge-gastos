@@ -27,8 +27,13 @@ export default function DashBoard() {
   }
 
   function updateData(id: number, data) {
-    const index = cardsData.findIndex((item) => item.id === id);
-    console.log(index);
+    let newList = cardsData.filter((item) => item.id !== id)
+    newList.push(data)
+    
+
+    setCardsData(newList)
+    setFilteredData(newList)
+   
   }
 
   const sortData = (option) => {
@@ -85,7 +90,7 @@ export default function DashBoard() {
 
       <OrderFilter onSearch={applyFilter} onOrderChange={sortData}/>
       <div className="h-[300px]">
-      <DataCardList onDelete={deleteData} key={0} data={filteredData}></DataCardList>
+      <DataCardList onDelete={deleteData} onUpdate={updateData}  key={0} data={filteredData}></DataCardList>
       </div>
       
 

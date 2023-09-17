@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert, Card, CardContent, Typography } from '@mui/material';
 import DataCard from './data_card';
 
-export default function DataCardList({ data, onDelete }) {
+export default function DataCardList({ data, onDelete,onUpdate }) {
   if (data.length === 0) {
     return (
       <Card sx={{ width: '100%' }}>
@@ -21,9 +21,7 @@ export default function DataCardList({ data, onDelete }) {
   }
 
   // por algum motivo o ts não parava de chorar ai eu criei isso para parar de me dar faniquito enquanto não implemento o update
-  function onUpdate(){
-
-  }
+  
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

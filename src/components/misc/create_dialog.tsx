@@ -58,13 +58,15 @@ export default function CreateDialog({createData,data}) {
       errorNotify('O valor não pode ser negativo.');
       return;
     }
-    
   
+    
+    const timezoneOffset = new Date().getTimezoneOffset();
+    const adjustedDate = new Date(new Date(date).getTime() + timezoneOffset * 60 * 1000);
   
     const newItem = {
       id: data.length + 1,
       valor: parseFloat(valor),
-      data: new Date(date),
+      data: adjustedDate,
       categoria,
       descricao,
     };
