@@ -2,11 +2,10 @@ import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
 import Image from 'next/image';
-import EditDialog from './edit_dialog';
+import CreateDialog from './create_dialog';
 
-export default function NavBar({updateData,data}) {
+export default function NavBar({createData,data}) {
   return (
     <AppBar position="static" className='bg-white border-b border-gray-300'>
       <Toolbar>
@@ -17,7 +16,7 @@ export default function NavBar({updateData,data}) {
           <Image src={"/sd-logo.svg"} height={150} width={150} alt='logo_sense_data' />
         </IconButton>
         <div style={{ flexGrow: 1 }}></div>
-        <EditDialog updateData={updateData}   data={data}/>
+        <CreateDialog createData={createData}   data={data} />
       </Toolbar>
     </AppBar>
   );

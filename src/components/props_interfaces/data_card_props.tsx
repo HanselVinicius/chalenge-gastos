@@ -5,5 +5,6 @@ export default interface DataCardProps {
       data: Date;
       categoria: string;
       descricao: string;
-      onDelete: (id)=> void;  
+      onDelete: (id)=> void; 
+      onUpdate: (id)=>void; 
   }

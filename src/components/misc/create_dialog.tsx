@@ -1,28 +1,28 @@
-'use client'
 import React, {  useRef, useState } from 'react';
 import { IconButton, TextField, Button } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 
 declare var document: any;
 
-export default function EditDialog({updateData,data}) {
-    const [valor, setValor] = useState(data['valor']);
-    const [date, setDate] = useState(data['data'].toLocaleDateString());
-    const [categoria, setCategoria] = useState(data['categoria']);
-    const [descricao, setDescricao] = useState(data['descricao']);
-    const [errorMessage, setErrorMessage] = useState('');
+export default function CreateDialog({createData,data}) {
+  const [valor, setValor] = useState('');
+  const [date, setDate] = useState('');
+  const [categoria, setCategoria] = useState('');
+  const [descricao, setDescricao] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+ 
   const formRef = useRef<HTMLFormElement | null>(null);
 
 
  
-    
+
   function closeModal() {
     setValor('');
     setCategoria('');
     setDate('')
     setDescricao('');
     setErrorMessage('');
-    document.getElementById('dialog_2').close();
+    document.getElementById('dialog_1').close();
     if(formRef.current != null){
     formRef.current.reset();
     }
@@ -70,7 +70,7 @@ export default function EditDialog({updateData,data}) {
     };
   
     const newDataSet = [...data, newItem];
-    updateData(newDataSet);
+    createData(newDataSet);
     event.target.reset();
     closeModal();
   }
@@ -78,7 +78,7 @@ export default function EditDialog({updateData,data}) {
   return (
     <>
       <IconButton
-        onClick={() => document.getElementById('dialog_2').showModal()}
+        onClick={() => document.getElementById('dialog_1').showModal()}
         edge="end"
         className='text-black'
         aria-label="adicionar"
@@ -86,7 +86,7 @@ export default function EditDialog({updateData,data}) {
         <EditIcon />
       </IconButton>
 
-      <dialog id="dialog_2" className="modal rounded-lg">
+      <dialog id="dialog_1" className="modal rounded-lg">
         <div className="modal-card rounded-xl shadow-md p-4 bg-white w-96 mx-auto">
           <button className="close-button absolute top-2 right-2 bg-transparent border-none cursor-pointer text-gray-600" onClick={closeModal}>
             ✕
@@ -100,7 +100,7 @@ export default function EditDialog({updateData,data}) {
                 onChange={(event) => {
                   setValor(event.target.value)
                 }}
-                label={valor}
+                label='Valor'
                 type="number"
                 variant="outlined"
                 fullWidth

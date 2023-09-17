@@ -12,27 +12,50 @@ import DataCardProps from '@/components/props_interfaces/data_card_props';
 
 
 export default function DashBoard() {
-  const [cardsData, setCardsData] = useState<DataCardProps[]>([
+  const [cardsData, setCardsData] = useState<DataCardProps[]>([]);
+  const [filteredData, setFilteredData] = useState<DataCardProps[]>([]); 
 
-  ]);
-
-
-  const updateData = (newData) => {
+  const createData = (newData) => {
     setCardsData(newData);
+    setFilteredData(newData); 
   };
 
   function deleteData(id: number) {
+    const updatedData = cardsData.filter((item) => item.id !== id);
+    setCardsData(updatedData);
+    setFilteredData(updatedData); 
+  }
+
+  function updateData(id: number, data) {
     const index = cardsData.findIndex((item) => item.id === id);
-    if (index !== -1) {
-      cardsData.splice(index, 1);
-      setCardsData([...cardsData]); 
+    console.log(index);
+  }
+
+  const sortData = (option) => {
+    const sorted = [...filteredData]; 
+    if (option == 1) {
+      sorted.sort((a, b) => parseFloat(b.valor) - parseFloat(a.valor));
+    } else {
+      sorted.sort((a, b) => parseFloat(a.valor) - parseFloat(b.valor));
+    }
+    setFilteredData(sorted);
+  };
+
+  const applyFilter = (searchValue) => {
+    if (searchValue === '') {
+      setFilteredData(cardsData); 
+    } else {
+      const filtered = cardsData.filter((item) =>
+        item.categoria.toLowerCase().includes(searchValue.toLowerCase()) ||
+        item.valor.toString().includes(searchValue)
+      );
+      setFilteredData(filtered);
     }
   };
-  
 
   return (
     <main className='h-screen w-screen bg-white flex flex-col'>
-      <NavBar updateData={updateData} data={cardsData} />
+      <NavBar createData={createData} data={cardsData} />
 
       <div className='mt-4  justify-center'>
         <div className='w-full px-4'>
@@ -60,9 +83,9 @@ export default function DashBoard() {
 
       </div>
 
-      <OrderFilter/>
+      <OrderFilter onSearch={applyFilter} onOrderChange={sortData}/>
       <div className="h-[300px]">
-      <DataCardList onDelete={deleteData} key={0} data={cardsData}></DataCardList>
+      <DataCardList onDelete={deleteData} key={0} data={filteredData}></DataCardList>
       </div>
       
 

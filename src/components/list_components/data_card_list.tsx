@@ -1,6 +1,6 @@
 import React from 'react';
-import DataCard from './data_card';
 import { Alert, Card, CardContent, Typography } from '@mui/material';
+import DataCard from './data_card';
 
 export default function DataCardList({ data, onDelete }) {
   if (data.length === 0) {
@@ -20,11 +20,16 @@ export default function DataCardList({ data, onDelete }) {
     );
   }
 
+  // por algum motivo o ts não parava de chorar ai eu criei isso para parar de me dar faniquito enquanto não implemento o update
+  function onUpdate(){
+
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {data.map((item, index) => (
-        <DataCard key={index} data={item} id={0} valor={''} categoria={''} descricao={''} onDelete={onDelete} />
-      ))}
+        <DataCard  onUpdate={onUpdate} key={index} data={item} id={0} valor={''} categoria={''} descricao={''} onDelete={onDelete} />
+))}
     </div>
   );
 }

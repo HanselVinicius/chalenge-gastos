@@ -1,22 +1,22 @@
 import { Card, CardContent, Typography, IconButton } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close"; // Import the CloseIcon
+import CloseIcon from "@mui/icons-material/Close";
 import DataCardProps from "../props_interfaces/data_card_props";
 import EditDialog from "../misc/edit_dialog";
 
-export default function DataCard({ data ,onDelete}: DataCardProps) {
+export default function DataCard({ data, onDelete, onUpdate }: DataCardProps) {
   return (
     <Card className="w-96 flex" style={{ position: "relative" }}>
       <IconButton
         style={{ position: "absolute", top: 0, right: 0 }}
         onClick={() => {
           onDelete(data['id'])
-          console.log("Close icon clicked");
         }}
       >
         <CloseIcon />
       </IconButton>
 
-      <EditDialog updateData={undefined} data={data}/>  
+      
+      {renderEditDialog(data)}
 
       <CardContent className="flex-grow">
         <Typography variant="h6" gutterBottom>
@@ -49,4 +49,8 @@ export default function DataCard({ data ,onDelete}: DataCardProps) {
       </CardContent>
     </Card>
   );
+}
+
+function renderEditDialog(data) {
+  return <EditDialog data={data} updateData={undefined} />;
 }
