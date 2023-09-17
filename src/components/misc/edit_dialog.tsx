@@ -91,6 +91,7 @@ export default function EditDialog({updateData,data}) {
 
             <form ref={formRef} method="dialog" onSubmit={handleSubmit}>
               <TextField
+                sx={{marginBottom:2}}
                 onChange={(event) => {
                   setValor(event.target.value)
                 }}
@@ -98,9 +99,10 @@ export default function EditDialog({updateData,data}) {
                 type="number"
                 variant="outlined"
                 fullWidth
-                className="mb-2"
+               
               />
               <TextField
+                sx={{marginBottom:2}}
                 onChange={(event) => {
                   setDate(new Date(event.target.value.toString()))
                 }}
@@ -114,26 +116,25 @@ export default function EditDialog({updateData,data}) {
                 type="date"
                 variant="outlined"
                 fullWidth
-                className="mb-2"
               />
               <TextField
+                sx={{marginBottom:2}}
                 onChange={(event) => {
                   setDescricao(event.target.value)
                 }}
                 value={descricao}
                 variant="outlined"
                 fullWidth
-                className="mb-2"
               />
 
               <TextField
+                sx={{marginBottom:2}}
                 onChange={(event) => {
                   setCategoria(event.target.value)
                 }}
                 value={categoria}
                 variant="outlined"
                 fullWidth
-                className="mb-4"
               />
               <Button
                 id="saveButton"

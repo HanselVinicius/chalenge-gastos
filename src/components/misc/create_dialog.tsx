@@ -99,6 +99,7 @@ export default function CreateDialog({createData,data}) {
 
             <form ref={formRef} method="dialog" onSubmit={handleSubmit}>
               <TextField
+                sx={{marginBottom:2}}
                 onChange={(event) => {
                   setValor(event.target.value)
                 }}
@@ -106,9 +107,9 @@ export default function CreateDialog({createData,data}) {
                 type="number"
                 variant="outlined"
                 fullWidth
-                className="mb-2"
               />
               <TextField
+                sx={{marginBottom:2}}
                 onChange={(event) => {
                   setDate(event.target.value.toString())
                 }}
@@ -119,9 +120,9 @@ export default function CreateDialog({createData,data}) {
                 type="date"
                 variant="outlined"
                 fullWidth
-                className="mb-2"
               />
               <TextField
+                sx={{marginBottom:2}}
                 onChange={(event) => {
 
                   setDescricao(event.target.value)
@@ -129,17 +130,16 @@ export default function CreateDialog({createData,data}) {
                 label="Descrição"
                 variant="outlined"
                 fullWidth
-                className="mb-2"
               />
 
               <TextField
+                sx={{marginBottom:2}}
                 onChange={(event) => {
                   setCategoria(event.target.value)
                 }}
                 label="Categoria"
                 variant="outlined"
                 fullWidth
-                className="mb-4"
               />
               <Button
                 id="saveButton"

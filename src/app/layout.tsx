@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <link rel='icon' href='/sense_data_fvc.jpg'></link>
+      
       <body>{children}</body>
     </html>
   )

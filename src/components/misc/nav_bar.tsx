@@ -7,7 +7,7 @@ import CreateDialog from './create_dialog';
 
 export default function NavBar({createData,data}) {
   return (
-    <AppBar position="static" className='bg-white border-b border-gray-300'>
+    <AppBar position="static" className='bg-white border-b border-gray-300' sx={{backgroundColor:'#fff'}}>
       <Toolbar>
         <IconButton
           edge="start"
