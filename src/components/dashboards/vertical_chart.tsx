@@ -1,22 +1,54 @@
 import { Card, CardContent } from '@mui/material';
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import DashboardProps from '../props_interfaces/dashboard_pizza_props';
 
-export default function VerticalChart() {
-  const data = {
-    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
+
+
+
+function groupAndSumByMonth(data) {
+  const monthMap = {};
+
+  data.forEach((item) => {
+    const date = new Date(item.data);
+    const month = date.toLocaleDateString('default', { month: 'long' });
+    const valor = parseFloat(item.valor);
+
+    if (monthMap[month]) {
+      monthMap[month] += valor;
+    } else {
+      monthMap[month] = valor;
+    }
+  });
+
+  const labels = Object.keys(monthMap);
+  const values = Object.values(monthMap);
+
+  return { labels, values };
+}
+
+
+
+export default function VerticalChart({ data }:DashboardProps) {
+ 
+  const { labels, values } = groupAndSumByMonth(data);
+
+
+  const chartData = {
+    labels: labels,
     datasets: [
       {
-        label: 'Sales',
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
-        borderColor: 'rgba(75, 192, 192, 1)',
+        label: 'Gastos',
+        backgroundColor: 'rgba(0, 102, 204, 0.6)', // Azul
+        borderColor: 'rgba(0, 102, 204, 1)', // Azul 
         borderWidth: 1,
-        hoverBackgroundColor: 'rgba(75, 192, 192, 0.8)',
-        hoverBorderColor: 'rgba(75, 192, 192, 1)',
-        data: [65, 59, 80, 81, 56],
+        hoverBackgroundColor: 'rgba(255, 165, 0, 0.8)', // Laranja
+        hoverBorderColor: 'rgba(255, 165, 0, 1)', // Laranja
+        data: values,
       },
     ],
   };
+  
 
   const options = {
     scales: {
@@ -30,17 +62,15 @@ export default function VerticalChart() {
   };
 
   return (
-    
     <Card sx={{ width: '300px', height: '350px' }}>
-    <CardContent>
-     <>
-      <h2 className="text-xl font-semibold mb-4">Valor e Data</h2>
-       <div className="w-64">
-         <Bar data={data} />
-       </div>
-     </>
-     </CardContent>
-   </Card>
-      
+      <CardContent className="flex flex-col h-full">
+        <h2 className="text-xl font-semibold mb-4 text-left">Valor e Data</h2>
+        <div className="flex justify-center items-center h-full">
+          <div className="w-64">
+            <Bar data={chartData} options={options} />
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

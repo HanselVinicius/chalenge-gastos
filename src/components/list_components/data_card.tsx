@@ -1,9 +1,23 @@
-import React from 'react';
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Typography, IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close"; // Import the CloseIcon
+import DataCardProps from "../props_interfaces/data_card_props";
+import EditDialog from "../misc/edit_dialog";
 
-export default function HorizontalCard() {
+export default function DataCard({ data ,onDelete}: DataCardProps) {
   return (
-    <Card className="w-96 flex">
+    <Card className="w-96 flex" style={{ position: "relative" }}>
+      <IconButton
+        style={{ position: "absolute", top: 0, right: 0 }}
+        onClick={() => {
+          onDelete(data['id'])
+          console.log("Close icon clicked");
+        }}
+      >
+        <CloseIcon />
+      </IconButton>
+
+      <EditDialog updateData={undefined} data={data}/>  
+
       <CardContent className="flex-grow">
         <Typography variant="h6" gutterBottom>
           Dados do Registro
@@ -11,24 +25,24 @@ export default function HorizontalCard() {
         <div className="flex space-x-4">
           <div className="flex-grow">
             <Typography variant="body1">
-              <strong>Valor:</strong> R$ 100.00
+              <strong>Valor:</strong> {data['valor']}
             </Typography>
           </div>
           <div className="flex-grow">
             <Typography variant="body1">
-              <strong>Data:</strong> 2023/09/15
+              <strong>Data:</strong> {data['data'].toLocaleDateString()}
             </Typography>
           </div>
         </div>
         <div className="flex space-x-4">
           <div className="flex-grow">
             <Typography variant="body1">
-              <strong>Categoria:</strong> Alimentação
+              <strong>Categoria:</strong> {data['categoria']}
             </Typography>
           </div>
           <div className="flex-grow">
             <Typography variant="body1">
-              <strong>Descrição:</strong> Almoço no restaurante X
+              <strong>Descrição:</strong> {data['descricao']}
             </Typography>
           </div>
         </div>

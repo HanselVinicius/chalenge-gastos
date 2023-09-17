@@ -1,4 +1,4 @@
-import LoginCard from "@/components/card_login";
+import LoginCard from "@/components/login/card_login";
 import { ToastContainer } from "react-toastify";
 
 export default function Home() {

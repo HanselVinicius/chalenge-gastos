@@ -6,7 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import Image from 'next/image';
 import EditDialog from './edit_dialog';
 
-export default function NavBar() {
+export default function NavBar({updateData,data}) {
   return (
     <AppBar position="static" className='bg-white border-b border-gray-300'>
       <Toolbar>
@@ -17,7 +17,7 @@ export default function NavBar() {
           <Image src={"/sd-logo.svg"} height={150} width={150} alt='logo_sense_data' />
         </IconButton>
         <div style={{ flexGrow: 1 }}></div>
-        <EditDialog/>
+        <EditDialog updateData={updateData}   data={data}/>
       </Toolbar>
     </AppBar>
   );
