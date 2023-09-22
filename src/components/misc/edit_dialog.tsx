@@ -136,13 +136,14 @@ export default function EditDialog({updateData,data}) {
                 variant="outlined"
                 fullWidth
               />
-              <Button
+              <Button 
+              
                 id="saveButton"
                 type="submit"
                 variant="contained"
                 sx={{
                   color: 'black',
-                  backgroundColor: '#1976D2',
+                  backgroundColor: '#fff',
                   '&:hover': {
                     backgroundColor: '#fd6a23',
                   },

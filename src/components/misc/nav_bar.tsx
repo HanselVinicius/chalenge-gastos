@@ -13,7 +13,7 @@ export default function NavBar({createData,data}) {
           edge="start"
           aria-label="logo"
         >
-          <Image src={"/sd-logo.svg"} height={150} width={150} alt='logo_sense_data' />
+          <Image src={"/"} height={150} width={150} alt='logo' />
         </IconButton>
         <div style={{ flexGrow: 1 }}></div>
         <CreateDialog createData={createData}   data={data} />

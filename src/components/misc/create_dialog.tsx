@@ -39,6 +39,10 @@ export default function CreateDialog({createData,data}) {
   }
 
   function handleSend(event) {
+    console.log(valor)
+    console.log(descricao)
+    console.log(categoria)
+
     if (valor === '' || descricao === '' || date === '' || categoria === '') {
       errorNotify('Por favor, insira corretamente os dados.');
       return;
@@ -124,7 +128,6 @@ export default function CreateDialog({createData,data}) {
               <TextField
                 sx={{marginBottom:2}}
                 onChange={(event) => {
-
                   setDescricao(event.target.value)
                 }}
                 label="Descrição"

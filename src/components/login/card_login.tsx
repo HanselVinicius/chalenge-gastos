@@ -19,7 +19,7 @@ export default function LoginCard() {
   const [senha, setSenha] = useState('')
 
   const handleLogin = () => {
-    if (usuario == 'sensedata@sensedata.com' && senha == '1234') {
+    if (usuario == 'vinicius' && senha == '1234') {
       router.push('/dashboard');
     } else {
       toast.error('Credenciais Incorretas', {
@@ -52,7 +52,7 @@ export default function LoginCard() {
       <Card sx={{ width: '300px' }}>
         <CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
-            <Image src={"/logo_sense.jpg"} height={200} width={200} alt='logo_sense_data' />
+            <Image src={""} height={200} width={200} alt='logoa' />
           </Box>
           <Typography variant="h5" component="div" sx={{ textAlign: 'center' }}>
             Entrar
@@ -95,7 +95,7 @@ export default function LoginCard() {
             variant="contained"
             sx={{
               color: 'black',
-              backgroundColor: '#1976D2',
+              backgroundColor: '#fff',
               '&:hover': {
                 backgroundColor: '#fd6a23',
               },
