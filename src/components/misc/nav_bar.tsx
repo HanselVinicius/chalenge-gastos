@@ -13,7 +13,7 @@ export default function NavBar({createData,data}) {
           edge="start"
           aria-label="logo"
         >
-          <Image src={"/"} height={150} width={150} alt='logo' />
+          <Image src={"/kanji_bushido.png"} height={75} width={75} alt='logo' />
         </IconButton>
         <div style={{ flexGrow: 1 }}></div>
         <CreateDialog createData={createData}   data={data} />

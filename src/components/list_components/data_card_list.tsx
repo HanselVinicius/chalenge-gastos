@@ -20,7 +20,6 @@ export default function DataCardList({ data, onDelete,onUpdate }) {
     );
   }
 
-  // por algum motivo o ts não parava de chorar ai eu criei isso para parar de me dar faniquito enquanto não implemento o update
   
 
   return (

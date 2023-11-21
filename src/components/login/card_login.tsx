@@ -52,7 +52,7 @@ export default function LoginCard() {
       <Card sx={{ width: '300px' }}>
         <CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
-            <Image src={""} height={200} width={200} alt='logoa' />
+            <Image src={"/kanji_bushido.png"} height={100} width={100} alt='logoa' />
           </Box>
           <Typography variant="h5" component="div" sx={{ textAlign: 'center' }}>
             Entrar
