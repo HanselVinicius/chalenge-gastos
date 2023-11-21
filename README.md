@@ -27,7 +27,5 @@ Desafio de Gastos - Produção
 Credenciais de Acesso
 Para acessar o sistema, você pode usar as seguintes credenciais:
 
-E-mail: sensedata@sensedata.com
-Senha: 1234
 
 
