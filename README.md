@@ -17,15 +17,7 @@ Para executar o projeto localmente, siga os passos abaixo:
       yarn dev
    
 O projeto estará disponível em http://localhost:3000.
-  
-Acesso à Produção
-Você pode acessar a versão de produção do projeto através do seguinte link:
-chalenge-gastos.vercel.app/
 
-Desafio de Gastos - Produção
-
-Credenciais de Acesso
-Para acessar o sistema, você pode usar as seguintes credenciais:
 
 
 
